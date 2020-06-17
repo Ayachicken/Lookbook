@@ -1,4 +1,5 @@
 # Lookbook
+![Lookbook](https://github.com/Ayachicken/Lookbook/blob/develop/app/assets/images/Lookbook%E3%83%AD%E3%82%B4%EF%BC%88%E4%BB%AE%EF%BC%89.png)
 ## サイト概要
 おしゃれしたいが初めてで何をしたらいいか分からない方に送る
 おしゃれさんのコーデ（洋服・ネイル・化粧・アクセサリー）を
