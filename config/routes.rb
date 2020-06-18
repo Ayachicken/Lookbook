@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :posts, only:[:show, :new, :create, :edit, :update, :destroy] do
       resource :comments, only:[:create, :destroy]
       resource :favorites,only:[:create, :destroy]
+      get :favorites, on: :collection
     end
     resources :scenes, only:[:show]
     resources :inquiry, only:[:new, :create]
