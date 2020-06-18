@@ -1,4 +1,4 @@
 class Photo < ApplicationRecord
   belongs_to :post
-  attachment :photo
+  attachment :post_image
 end

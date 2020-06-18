@@ -2,7 +2,7 @@ class Users::InquiriesController < ApplicationController
   def new
   end
 
-  def confirm
+  def create
   end
 
   def complete
