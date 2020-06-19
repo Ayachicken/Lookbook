@@ -1,15 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang=ja>
   <head>
     <title>Lookbook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
+        <%= link_to root_path do %>
+          <%= image_tag 'Lookbookロゴ（仮）.png', style: 'width:200px;' %>
+        <% end %>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#UserNavi"
+              aria-controls="UserNavi" aria-expanded="false" aria-label="ナビゲーションの切替">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="UserNavi">
+        <ul class="navbar-nav ml-4">
+          <%= form_with url:'/users/search',method: :get,local: true do |f| %>
+            <%= f.text_field :search, placeholder: 'Search User or Post' %>
+            <%= select_tag(:option, options_for_select([['USER','1'],['POST','2']])) %>
+            <%= submit_tag 'Search' %>
+          <% end %>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <%= image_tag '香水.png', style: 'height:30px;' %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'text-dark' %>
+          </li>
+          <li class="nav-item mr-4">
+            <%= image_tag 'バッグ.png', style: 'height:30px;' %>
+            <%= link_to 'Sign In', new_user_session_path, class:'text-dark' %>
+          </li>
+        </ul>
+      </div>
+      </nav>
+      <div class="container-fluid bg-dark sub-nav" style='height: 3.5em;'>
+        <ul class='nav justify-content-center' style='padding-top: 1em;'>
+          <li class='nav-item mr-4'>
+            <%= link_to 'Scene', users_scenes_path, class: 'text-light'%>
+          </li>
+          <li class='nav-item mr-4'>
+            <%= link_to 'Top Users', users_users_path, class:'text-light' %>
+          </li>
+          <li class='nav-item'>
+            <%= link_to 'Top Posts', users_posts_path, class:'text-light'%>
+          </li>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

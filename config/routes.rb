@@ -9,18 +9,18 @@ Rails.application.routes.draw do
   }
 
   namespace :users do
-    resources :users, only:[:show, :edit, :update, :destroy]
-    resources :posts, only:[:show, :new, :create, :edit, :update, :destroy] do
+    resources :users, only:[:index, :show, :edit, :update, :destroy]
+    resources :posts do
       resource :comments, only:[:create, :destroy]
       resource :favorites,only:[:create, :destroy]
       get :favorites, on: :collection
     end
-    resources :scenes, only:[:show]
+    resources :scenes, only:[:show, :index]
     resources :inquiry, only:[:new, :create]
-    get 'users/inquiry' => 'inquiries#complete', as: 'inquiry_complete'
-    get 'homes/top' => 'homes#top', as: 'user_top'
-    get 'homes/help' => 'homes#help', as: 'user_help'
-    get 'search' => 'searches#search', as: 'user_search'
+    get 'inquiry' => 'inquiries#complete', as: 'inquiry_complete'
+    get 'top' => 'homes#top', as: 'top'
+    get 'help' => 'homes#help', as: 'help'
+    get 'search' => 'searches#search', as: 'search'
     #↓フォローする、フォローを外す動作
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
