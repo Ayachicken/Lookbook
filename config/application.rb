@@ -20,5 +20,6 @@ module Lookbook
     config.active_record.default_timezone = :local #DBの時間設定
     #↓i18n設定読み込み用
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = :ja
   end
 end

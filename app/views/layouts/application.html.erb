@@ -30,22 +30,39 @@
           <%= form_with url:'/users/search',method: :get,local: true do |f| %>
             <%= f.text_field :search, placeholder: 'Search User or Post' %>
             <%= select_tag(:option, options_for_select([['USER','1'],['POST','2']])) %>
-            <%= submit_tag 'Search' %>
+            <%= submit_tag 'Search', class:'btn btn-info btn-sm' %>
           <% end %>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <i class="fas fa-user-circle"></i>
+            <%= link_to 'Mypage', users_user_path(current_user), class: 'text-dark' %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= image_tag '靴.png', style: 'height:30px;' %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'text-dark' %>
+          </li>
+          <li class="nav-item mr-5 btn btn-info">
+            <i class="fas fa-pen-alt"></i>
+            <%= link_to ' 投稿', new_users_post_path, class: 'text-light' %>
+          </li>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-3">
             <%= image_tag '香水.png', style: 'height:30px;' %>
             <%= link_to 'Sign Up', new_user_registration_path, class: 'text-dark' %>
           </li>
-          <li class="nav-item mr-4">
+          <li class="nav-item mr-5">
             <%= image_tag 'バッグ.png', style: 'height:30px;' %>
             <%= link_to 'Sign In', new_user_session_path, class:'text-dark' %>
           </li>
-        </ul>
+          </ul>
+        <% end %>
       </div>
       </nav>
-      <div class="container-fluid bg-dark sub-nav" style='height: 3.5em;'>
+      <div class="container-fluid bg-info sub-nav" style='height: 3.5em;'>
         <ul class='nav justify-content-center' style='padding-top: 1em;'>
           <li class='nav-item mr-4'>
             <%= link_to 'Scene', users_scenes_path, class: 'text-light'%>

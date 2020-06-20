@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   # ↓はacts-as-taggable-on用記述
   acts_as_taggable_on :tags
 
-  validate :post_title, presence: true
-  validate :posted_text, presence: true
+  validates :post_title, presence: true
+  validates :posted_text, presence: true
 end

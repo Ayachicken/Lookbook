@@ -70,15 +70,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #以下追加したgem
 gem 'devise'
+# ↓omniauth用googleアカウント
+gem 'omniauth-google-oauth2'
 gem 'bootstrap','~>4.4.1'
 gem 'bootstrap-form'
+#gem 'bootstrap-form'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+# ↓ページング
 gem 'kaminari'
 gem 'better_errors'
+# ↓slimを使う
 gem 'slim-rails'
+# ↓複雑な検索を可能にする
 gem 'ransack'
+# ↓タグ機能を簡単に実装
 gem 'acts-as-taggable-on', '~>6.0'

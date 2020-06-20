@@ -1,5 +1,5 @@
 class Inquiry < ApplicationRecord
-  validate :name, presence: true
-  validate :message, presence: true
-  validate :email, presence: true
+  validates :name, presence: true
+  validates :message, presence: true
+  validates :email, presence: true
 end
