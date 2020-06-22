@@ -1,33 +1,52 @@
-h4 プロフィール編集
-= form_with model: @user, url: users_user_path, method: :update, local: true do |f|
-table
-  tr
-    td
-      = attachment_image_tag @user, :profile_image, size: '30x30', class: 'rounded-circle profile-thumb', fallback: 'noimage.jpg'
-    td.col-4
-      = f.attachment_field :profile_image
-  tr
-    td
-      = f.label :nickname, 'ニックネーム'
-    td.col-4
-      = f.text_field :nickname, class: 'nickname'
-  tr
-    td
-      = f.label :gender, '性別'
-    td
-      = select_tag(:gender, options_for_select([['女性','0'],['男性','1'],['どちらでもない','2']]))
-  tr
-    td
-      = f.label :age, '年齢'
-    td
-      = select_tag(:age, options_for_select([['10代以下','0'],['20代','1'],['30代','2'],['40代','3'],['50代以上','4']]))
-  tr
-    td
-      = f.label :introduction, '自己紹介'
-    td.col-4
-      = f.text_area :introduction, class: 'introduction'
-  tr
-    td
-      = link_to 'マイページに戻る', users_user_path(current_user), class: 'btn btn-secondary btn-sm'
-    td
-    = f.submit '変更を保存', users_user_path, class: 'btn btn-primary btn-sm'
+h4.edit_profile.justify-content-center Profile editing
+- if @user.errors.any?
+  div.alert.alert-warning
+    = pluralize(@user.errors.count, '件のエラーが発生しました')
+     ul
+      - @user.errors.full_messages.each do |message|
+      li = message
+
+div.container
+  = form_with model: @user, url: users_user_path, local: true do |f|
+    table
+      tr.row
+        td.mx-auto
+          = attachment_image_tag @user, :profile_image, size: '50x50', class: 'rounded-circle profile-thumb', fallback: 'noimage.jpg'
+        td.col-3
+          = f.attachment_field :profile_image
+      tr.row
+        td.mx-auto
+          = f.label :nickname, 'ニックネーム'
+        td.col-3
+          = f.text_field :nickname, class: 'nickname'
+      tr.row
+        td.mx-auto
+          = f.label :gender, '性別'
+        td.col-3
+          = select_tag(:gender, options_for_select([['女性','0'],['男性','1'],['どちらでもない','2']]))
+      tr.row
+        td.mx-auto
+          = f.label :age, '年齢'
+        td.col-3
+          = select_tag(:age, options_for_select([['10代以下','0'],['20代','1'],['30代','2'],['40代','3'],['50代以上','4']]))
+      tr.row
+        td.mx-auto
+          = f.label :introduction, '自己紹介'
+        td.col-3
+          = f.text_area :introduction, class: 'introduction'
+      tr.row
+        td.mx-auto
+          = f.label :email, 'メールアドレス'
+        td.col-3
+          = f.email_field :email
+      tr.row
+        td.mx-auto
+          = f.label :password, 'パスワード'
+          span.bg-danger.text-white.p-1 6文字以上
+        td.col-3
+          = f.password_field :password
+      tr.row
+        td
+          = link_to 'マイページに戻る', users_user_path(current_user), class: 'btn btn-secondary btn-sm mx-auto'
+        td
+          = f.submit '変更を保存', class: 'btn btn-primary btn-sm'

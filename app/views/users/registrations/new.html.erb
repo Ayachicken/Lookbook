@@ -4,7 +4,7 @@
   <%= render "users/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :nickname, 'ニックネーム' %><br />
-    <%= f.email_field :nickname, autofocus: true, autocomplete: "nickname" %>
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
   </div>
 
   <div class="field">

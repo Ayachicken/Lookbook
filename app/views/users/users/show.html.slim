@@ -1,14 +1,16 @@
 h3.headline Profile
 h5 プロフィール画像
-div.profile_image
-= attachment_image_tag @user, :profile_image, size: '100x100', fallback: 'noimage.jpg'
-h5.profile_item ニックネーム
-= @user.nickname
-h5.profile_item 性別
-= @user.gender
-h5.profile_item 年齢
-= @user.age
-h5.profile_item 自己紹介
-= @user.introduction
-- if @user.id == current_user.id
-= link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm'
+div.profile
+  div.profile_image.mt-2
+  = attachment_image_tag @user, :profile_image, size: '100x100', fallback: 'noimage.jpg'
+  h5.profile_item.mt-2 ニックネーム
+  = @user.nickname
+  h5.profile_item.mt-2 性別
+  = @user.gender
+  h5.profile_item.mt-2 年齢
+  = @user.age
+  h5.profile_item.mt-2 自己紹介
+  = @user.introduction
+  br
+  - if @user.id == current_user.id
+  = link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm mt-2'

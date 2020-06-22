@@ -1,0 +1,16 @@
+- if post.errors.any?
+  div.alert.alert-warning
+    ul
+      = post.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: @post do |f|
+  table
+    tr
+    td
+      = f.label :post_title, '記事のタイトル'
+    td
+      = f.text_area :post_title, placeholder: 'タイトル:20字以内'
+    tr
+    td
+      = f.label :

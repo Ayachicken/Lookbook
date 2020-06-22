@@ -19,4 +19,26 @@ class User < ApplicationRecord
   enum gender:['女性','男性','どちらでもない']
   enum age:['10代以下','20代','30代','40代','50代以上']
   enum validity:['Valid','Invalid']
+
+  validates :nickname, presence: true, length: {in: 2..15}
+  validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
+  validates :introduction, length: {maximum:50}
+
+  # ユーザーのフォロー
+  def follow(user_id)
+    follower.create(follow_id: user_id)
+  end
+  # フォローを外す
+  def unfollow(user_id)
+    follower.find_by(follow_id: user_id).destroy
+  end
+  # フォローしていればtrueを返す
+  def following?(user)
+    following_user.include?(user)
+  end
+
+  #ユーザー検索
+  def self.search(search, user_or_post)
+    User.where(['name LIKE?',"%#{search}%"])
+  end
 end
