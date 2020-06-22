@@ -16,6 +16,7 @@ class Users::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    binding.pry
     if @user.update(user_params)
       @user = User.find(params[:id])
       redirect_to users_user_path(@user), notice: 'プロフィール編集完了しました。'
@@ -29,6 +30,6 @@ class Users::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname,:gender, :age, :introduction, :profile_image, :email, :password)
+    params.require(:user).permit(:nickname, :gender, :age, :introduction, :profile_image, :email, :password)
   end
 end

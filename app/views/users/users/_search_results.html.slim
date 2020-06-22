@@ -22,3 +22,5 @@ table.table.table-hover.table-inverse
         - if current_user.following?(user)
           = link_to 'フォローを外す', users_unfollow_path(user_id), method: :post, class: 'btn btn-danger'
           = link_to 'フォローする', users_follow_path(user_id), method: :post, class: 'btn btn-success'
+      td
+        = link_to '詳細', user

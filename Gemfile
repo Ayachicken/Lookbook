@@ -89,3 +89,5 @@ gem 'slim-rails'
 gem 'ransack'
 # ↓タグ機能を簡単に実装
 gem 'acts-as-taggable-on', '~>6.0'
+# 環境変数用
+gem 'dotenv-rails'

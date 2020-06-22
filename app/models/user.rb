@@ -17,7 +17,8 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
   # ↓enum用記述
   enum gender:['女性','男性','どちらでもない']
-  enum age:['10代以下','20代','30代','40代','50代以上']
+  enum age:['10代','20代','30代','40代','50代以上']
+  # enum age:[:a,:b,:c,:d,:e]
   enum validity:['Valid','Invalid']
 
   validates :nickname, presence: true, length: {in: 2..15}

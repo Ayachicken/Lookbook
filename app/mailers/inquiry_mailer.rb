@@ -3,7 +3,7 @@ class InquiryMailer < ApplicationMailer
     @inquiry = inquiry
     mail(
       from: 'system@Lookbook.info',
-      to:   'manager@Lookbook.info',
+      to:   ENV['GMAIL'],
       subject: 'お問い合わせ通知'
     )
   end
