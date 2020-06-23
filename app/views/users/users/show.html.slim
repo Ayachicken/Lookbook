@@ -27,6 +27,6 @@ div.container.mt-4
           = link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm mt-2'
         - if @user.id != current_user.id
           - if current_user.following?(@user)
-            = link_to 'フォローを外す', unfollow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm p-1'
+            = link_to 'フォローを外す', users_unfollow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm p-1'
           - else
-            = link_to 'フォローする', follow_path(@user.id), method: :post, class: 'btn btn-success btn-sm p-1'
+            = link_to 'フォローする', users_follow_path(@user.id), method: :post, class: 'btn btn-success btn-sm p-1'

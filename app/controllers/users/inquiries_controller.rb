@@ -6,8 +6,8 @@ class Users::InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      InquiryMailer.send_mail(inquiry).deliver
-      redirect_to user_inquiry_complete_path
+      InquiryMailer.send_mail(@inquiry).deliver
+      redirect_to users_inquiry_complete_path
     else
       render :new
     end
@@ -18,5 +18,6 @@ class Users::InquiriesController < ApplicationController
 
   private
   def inquiry_params
-    params.require(:inquiry),permit(:name, :message, :email)
+    params.require(:inquiry).permit(:name, :message, :email)
+  end
 end

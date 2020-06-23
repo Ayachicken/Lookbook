@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       get :favorites, on: :collection
     end
     resources :scenes, only:[:show, :index]
-    resources :inquiry, only:[:new, :create]
-    get 'inquiry' => 'inquiries#complete', as: 'inquiry_complete'
+    resources :inquiries, only:[:new, :create]
+    get 'inquiry/complete' => 'inquiries#complete', as: 'inquiry_complete'
     get 'top' => 'homes#top', as: 'top'
     get 'help' => 'homes#help', as: 'help'
     get 'search' => 'searches#search', as: 'search'
