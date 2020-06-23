@@ -48,6 +48,21 @@
             <%= link_to ' 投稿', new_users_post_path, class: 'text-light' %>
           </li>
           </ul>
+        <% elsif admin_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              <i class="fas fa-list"></i>
+              <%= link_to 'シーン一覧', admins_scenes_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item mr-3">
+              <i class="fas fa-users"></i>
+              <%= link_to 'ユーザー一覧', admins_users_path, class:'text-dark' %>
+            </li>
+            <li class="nav-item mr-5 btn btn-info">
+              <i class="far fa-folder-open"></i>
+              <%= link_to 'ポスト一覧', admins_posts_path, class: 'text-dark' %>
+            </li>
+          </ul>
         <% else %>
           <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-3">
@@ -76,6 +91,16 @@
         </ul>
       </div>
     </header>
+    <main style='height: 800px;'>
     <%= yield %>
+    </main>
+    <footer>
+      <ul class="footer-menu">
+        <li><%= link_to 'Home', root_path,class: 'text-white' %> ｜</li>
+        <li><%= link_to 'Lookbookの使い方', users_help_path, class: 'text-white' %> ｜</li>
+        <li><%= link_to 'お問い合わせ', new_users_inquiry_path, class: 'text-white' %></li>
+      </ul>
+      <p class='m-0'>© All rights reserved by Ayachicken.</p>
+  </footer>
   </body>
 </html>

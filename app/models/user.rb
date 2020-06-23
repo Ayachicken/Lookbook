@@ -18,7 +18,6 @@ class User < ApplicationRecord
   # ↓enum用記述
   enum gender:['女性','男性','どちらでもない']
   enum age:['10代','20代','30代','40代','50代以上']
-  # enum age:[:a,:b,:c,:d,:e]
   enum validity:['Valid','Invalid']
 
   validates :nickname, presence: true, length: {in: 2..15}
@@ -40,6 +39,6 @@ class User < ApplicationRecord
 
   #ユーザー検索
   def self.search(search, user_or_post)
-    User.where(['name LIKE?',"%#{search}%"])
+    User.where(['nickname LIKE?',"%#{search}%"])
   end
 end

@@ -11,7 +11,7 @@ table.table.table-hover.table-inverse
       td
         = attachment_image_tag(user, :profile_image, size: '40x40', fallback: 'noimage.png')
       td
-        = user.name
+        = user.nickname
       td
         p フォロー数: #{ user.following_user.count}
       td
@@ -23,4 +23,4 @@ table.table.table-hover.table-inverse
           = link_to 'フォローを外す', users_unfollow_path(user_id), method: :post, class: 'btn btn-danger'
           = link_to 'フォローする', users_follow_path(user_id), method: :post, class: 'btn btn-success'
       td
-        = link_to '詳細', user
+        = link_to '詳細', users_user_path(user_id)

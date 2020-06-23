@@ -1,0 +1,18 @@
+div.container.border.border-dark.rounded.mt-3
+  span.bg-info.text-white.p-1.mx-auto お問い合わせフォーム
+  = form_with model: @inquiry do |f|
+    table
+      tr
+        td
+          = f.label :name, 'お名前'
+        td
+          = f.text_field :name
+      tr
+        td
+          = f.label :message, 'お問い合わせ内容'
+        td
+          = f.text_area :message
+      tr
+        td
+          = f.label :email, '返信先'
+          = f.text_field :email

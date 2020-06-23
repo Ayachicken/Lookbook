@@ -9,12 +9,12 @@
 
   <div class="field">
     <%= f.label :gender, '性別' %><br />
-    <%= f.select(:gender, options_for_select([['女性', 0 ],['男性', 1 ],['どちらでもない', 2 ]])) %>
+    <%= f.select(:gender, options_for_select(['女性','男性','どちらでもない'])) %>
   </div>
 
   <div class="field">
     <%= f.label :age, '年齢' %><br />
-    <%= f.select(:age, options_for_select([['10代以下', 0 ],['20代', 1 ],['30代', 2 ],['40代', 3 ],['50代以上', 4 ]])) %>
+    <%= f.select(:age, options_for_select(['10代','20代','30代','40代','50代以上'])) %>
   </div>
 
   <div class="field">
@@ -25,7 +25,7 @@
   <div class="field">
     <%= f.label :password, 'パスワード' %>
     <% if @minimum_password_length %>
-    <span class='bg-danger text-white p-1'>(<%= @minimum_password_length %>文字以上で設定してください)</span>
+    <span class='bg-danger text-white'>(<%= @minimum_password_length %>文字以上で設定してください)</span>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
