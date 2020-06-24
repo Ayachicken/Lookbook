@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'help' => 'homes#help', as: 'help'
     get 'search' => 'searches#search', as: 'search'
     #↓フォローする、フォローを外す動作
-    post 'follow/:id' => 'relationships#follow', as: 'follow'
+    post 'follow/:id' => 'relationships#followed', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     #↓フォロー・フォロワー一覧を見る
     get 'users/:id/following' => 'relationships#following', as: 'following'

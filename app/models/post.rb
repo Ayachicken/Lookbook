@@ -9,4 +9,6 @@ class Post < ApplicationRecord
 
   validates :post_title, presence: true
   validates :posted_text, presence: true
+
+  accepts_nested_attributes_for :photos
 end

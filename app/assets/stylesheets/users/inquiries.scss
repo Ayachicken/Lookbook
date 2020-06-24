@@ -2,17 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@font-face{
-  font-family: "Hannary Mincho";
-  src: asset_url('Hannari.otf') format('opentype');
-}
-
-.text-complete.h4{
-  font-family: "Hannary Mincho",
-  "BIZ UD明朝 Medium",
-  serif;
-}
-
-.text-complete.h3{
-
+.text-complete{
+  font-family: 'Hannary Mincho',
+  'YuMincho','Yu Mincho','游明朝体',
+  'ヒラギノ明朝 ProN','Hiragino Mincho ProN',serif;
 }

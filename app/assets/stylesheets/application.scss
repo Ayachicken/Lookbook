@@ -15,9 +15,13 @@
  */
  @import 'bootstrap';
 
- body{
-	font-family: "Yu Gothic",
-  "Hiragino Sans CNS";
+ @font-face{
+   font-family: "Hannary Mincho";
+   src: asset_url('Hannari.otf') format('opentype');
+ }
+
+ .nav{
+	font-family: 'Helvetica Neue','Helvetica','Arial',"Yu Gothic","Hiragino Sans CNS";
   font-weight: 500;
 }
 
@@ -31,5 +35,7 @@ footer{
 }
 
 ul.footer-menu li {
-display: inline;
+  display: inline;
+  font-family: 'Helvetica Neue','Helvetica','Arial',"Yu Gothic","Hiragino Sans CNS";
+  font-weight: 500;
 }
