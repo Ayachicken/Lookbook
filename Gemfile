@@ -72,7 +72,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 # ↓omniauth用googleアカウント
 gem 'omniauth-google-oauth2'
+# ↓bootstrap4
 gem 'bootstrap','~>4.4.1'
+# ↓フォームがbootstrap仕様になる
 gem 'bootstrap-form'
 #gem 'bootstrap-form'
 gem 'jquery-rails'

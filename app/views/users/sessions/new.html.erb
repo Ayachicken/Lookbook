@@ -21,6 +21,10 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
+
+  <div class="actions mt-2">
+    <%= link_to "  Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: 'fab fa-google btn btn-primary' %>
+  </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "users/shared/links", class: 'mt-3' %>
