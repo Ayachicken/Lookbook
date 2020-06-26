@@ -80,6 +80,7 @@ gem 'bootstrap-form'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
+# ↓画像アップロード用
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 # ↓ページング

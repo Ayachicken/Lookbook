@@ -1,0 +1,24 @@
+div.container.mt-4
+  div.mx-auto style='width: 500px;'
+    h4.container-fluid.text-center ユーザー管理
+    table.table.table-borderless.table-hover.table-inverse
+      thead
+        tr
+          th colspan='5'
+
+      tbody
+        - @users.each do |user|
+          tr
+            td
+              = user.id
+            td
+              = attachment_image_tag(user, :profile_image, size: '40x40', fallback: 'noimage.jpg')
+            td
+              = user.nickname
+            td
+              = link_to '詳細', users_user_path(user)
+            td
+              - if user.validity == 'Valid'
+                = link_to '利用停止する', admins_suspend_user_path(user), method: :patch
+              - elsif user.validity == 'Invalid'
+                = link_to '停止解除する', admins_suspend_user_path(user), method: :patch

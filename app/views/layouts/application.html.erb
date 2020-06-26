@@ -52,15 +52,15 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-3">
               <i class="fas fa-list"></i>
-              <%= link_to 'シーン一覧', admins_scenes_path, class: 'text-dark' %>
+              <%= link_to 'シーン', admins_scenes_path, class: 'text-dark' %>
             </li>
             <li class="nav-item mr-3">
               <i class="fas fa-users"></i>
-              <%= link_to 'ユーザー一覧', admins_users_path, class:'text-dark' %>
+              <%= link_to 'ユーザー', admins_users_path, class:'text-dark' %>
             </li>
-            <li class="nav-item mr-5 btn btn-info">
+            <li class="nav-item mr-5">
               <i class="far fa-folder-open"></i>
-              <%= link_to 'ポスト一覧', admins_posts_path, class: 'text-dark' %>
+              <%= link_to 'ポスト', admins_posts_path, class: 'text-dark' %>
             </li>
           </ul>
         <% else %>

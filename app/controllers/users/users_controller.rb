@@ -5,6 +5,7 @@ class Users::UsersController < ApplicationController
   end
 
   def index
+    @top_users = User.top_users
   end
 
   def edit

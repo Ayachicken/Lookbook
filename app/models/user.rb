@@ -26,6 +26,10 @@ class User < ApplicationRecord
   validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
   validates :introduction, length: {maximum:50}
 
+  # 特定条件のユーザーをログインさせない
+  def active_for_authentication?
+    super && validity == 0
+  end
   # ユーザーのフォロー
   def followed(user_id)
     follower.create(follow_id: user_id)
@@ -39,21 +43,12 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  #ユーザー検索
+  # ユーザー検索
   def self.search(search, user_or_post)
     User.where(['nickname LIKE?',"%#{search}%"])
   end
 
-  # ↓omniauth
-  # def self.new_with_session(params, session)
-  #   super.tap do |user|
-  #     if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
-  #       user.email = data["email"] if user.email.blank?
-  #     end
-  #   end
-  # end
-
-  # ↓Omniauth login用
+  # Omniauth login
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -65,4 +60,8 @@ class User < ApplicationRecord
     end
   end
 
+  # フォロワー数ランキング
+  def self.top_users
+    User.order(:follower).limit(10).pluck(:id, :nickname, :introduction, :profile_image, :follower)
+  end
 end

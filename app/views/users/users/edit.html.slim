@@ -12,7 +12,8 @@ div.container
     table
       tr.row.mt-3
         td.mx-auto
-          = attachment_image_tag @user, :profile_image, size: '50x50', class: 'rounded-circle profile-thumb', fallback: 'noimage.jpg'
+          = attachment_image_tag @user, :profile_image, size: '50x50',
+          class: 'rounded-circle profile-thumb', fallback: 'noimage.jpg', id: :img_prev
         td.col-3
           = f.attachment_field :profile_image
       tr.row.mt-3
@@ -40,5 +41,6 @@ div.container
           = link_to 'マイページに戻る', users_user_path(current_user)
         td.col-3
           = f.submit '変更を保存', class: 'btn btn-primary btn-sm'
-  div.row
-      = link_to 'メールアドレスまたはパスワード変更はこちら', edit_user_registration_path, class: 'btn btn-secondary btn-sm mt-3 mx-auto'
+      tr
+        td.text-center
+          = link_to 'メールアドレスまたはパスワード変更はこちら', edit_user_registration_path, class: 'btn btn-secondary btn-sm mt-3 mx-auto'
