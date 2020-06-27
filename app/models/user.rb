@@ -20,7 +20,6 @@ class User < ApplicationRecord
   # ↓enum用記述
   enum gender:['女性','男性','どちらでもない']
   enum age:['10代','20代','30代','40代','50代以上']
-  enum validity:['Valid','Invalid']
 
   validates :nickname, presence: true, length: {in: 2..15}
   validates :email, presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
@@ -28,8 +27,14 @@ class User < ApplicationRecord
 
   # 特定条件のユーザーをログインさせない
   def active_for_authentication?
-    super && validity == 0
+    super && validity?
   end
+
+  # ログインできないときのメッセージ
+  def inactive_message
+    validity? ? super : :account_locked
+  end
+
   # ユーザーのフォロー
   def followed(user_id)
     follower.create(follow_id: user_id)

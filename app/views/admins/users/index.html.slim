@@ -1,5 +1,5 @@
 div.container.mt-4
-  div.mx-auto style='width: 500px;'
+  div.mx-auto style='width: 700px;'
     h4.container-fluid.text-center ユーザー管理
     table.table.table-borderless.table-hover.table-inverse
       thead
@@ -16,9 +16,9 @@ div.container.mt-4
             td
               = user.nickname
             td
-              = link_to '詳細', users_user_path(user)
+              = user.introduction
             td
-              - if user.validity == 'Valid'
+              - if user.validity == 1
                 = link_to '利用停止する', admins_suspend_user_path(user), method: :patch
-              - elsif user.validity == 'Invalid'
+              - elsif user.validity == 0
                 = link_to '停止解除する', admins_suspend_user_path(user), method: :patch

@@ -21,11 +21,11 @@
         <%= link_to root_path do %>
           <%= image_tag 'Lookbookロゴ（仮）.jpeg', style: 'width:200px;' %>
         <% end %>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#UserNavi"
-              aria-controls="UserNavi" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <button type="button" class="navbar-toggler mr-3" data-toggle="collapse" data-target="#Naviber"
+              aria-controls="Naviber" aria-expanded="false" aria-label="ナビゲーションの切替">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="UserNavi">
+      <div class="collapse navbar-collapse" id="Naviber">
         <ul class="navbar-nav ml-4">
           <%= form_with url:'/users/search',method: :get,local: true do |f| %>
             <%= f.text_field :search, placeholder: 'Search User or Post' %>
@@ -58,9 +58,13 @@
               <i class="fas fa-users"></i>
               <%= link_to 'ユーザー', admins_users_path, class:'text-dark' %>
             </li>
-            <li class="nav-item mr-5">
+            <li class="nav-item mr-3">
               <i class="far fa-folder-open"></i>
               <%= link_to 'ポスト', admins_posts_path, class: 'text-dark' %>
+            </li>
+            <li class="nav-item mr-5">
+              <i class="fas fa-sign-out-alt"></i>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'text-dark' %>
             </li>
           </ul>
         <% else %>
@@ -78,19 +82,27 @@
       </div>
       </nav>
       <div class="container-fluid bg-info sub-nav" style='height: 3.5em;'>
-        <ul class='nav justify-content-center' style='padding-top: 1em;'>
-          <li class='nav-item mr-4'>
-            <%= link_to 'Scene', users_scenes_path, class: 'text-light'%>
-          </li>
-          <li class='nav-item mr-4'>
-            <%= link_to 'Top Users', users_users_path, class:'text-light' %>
-          </li>
-          <li class='nav-item'>
-            <%= link_to 'Top Posts', users_posts_path, class:'text-light'%>
-          </li>
-        </ul>
+        <% if admin_signed_in? %>
+        <% else %>
+          <ul class='nav justify-content-center' style='padding-top: 1em;'>
+            <li class='nav-item mr-4'>
+              <%= link_to 'Scene', users_scenes_path, class: 'text-light'%>
+            </li>
+            <li class='nav-item mr-4'>
+              <%= link_to 'Top Users', users_users_path, class:'text-light' %>
+            </li>
+            <li class='nav-item'>
+              <%= link_to 'Top Posts', users_posts_path, class:'text-light'%>
+            </li>
+          </ul>
+        <% end %>
       </div>
     </header>
+    <div class='notifications'>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+      <% end %>
+    </div>
     <main style='height: 800px;'>
     <%= yield %>
     </main>
@@ -102,5 +114,8 @@
       </ul>
       <p class='m-0'>© All rights reserved by Ayachicken.</p>
   </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   </body>
 </html>
