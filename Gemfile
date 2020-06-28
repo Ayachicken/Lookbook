@@ -97,3 +97,7 @@ gem 'ransack'
 gem 'acts-as-taggable-on', '~>6.0'
 # 環境変数用
 gem 'dotenv-rails'
+
+group :production do
+  gem 'mysql2'
+end
