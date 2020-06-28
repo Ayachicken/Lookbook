@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import 'bootstrap';
+
+ @font-face{
+   font-family: "Hannary Mincho";
+   src: asset_url('Hannari.otf') format('opentype');
+ }
+
+.nav{
+	font-family: 'Helvetica Neue','Helvetica','Arial',"Yu Gothic","Hiragino Sans CNS";
+  font-weight: 500;
+}
+.navbar-collapse.collapse.show{
+  margin-left: 30px;
+}
+
+.notifications {
+  color: $white;
+  text-align: center;
+
+  .notice {
+    background-color: royalblue;
+  }
+
+  .alert {
+    background-color: orange;
+  }
+}
+
+footer{
+    width: 100%;
+    height: 100px;
+    background-color: #17A2B8;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+ul.footer-menu li {
+  display: inline;
+  font-family: 'Helvetica Neue','Helvetica','Arial',"Yu Gothic","Hiragino Sans CNS";
+  font-weight: 500;
+}

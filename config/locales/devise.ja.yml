@@ -1,0 +1,41 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+    attributes:
+      user:
+        current_password: "現在のパスワード"
+        nickname: "ニックネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "次回から自動的にログイン"
+    models:
+      user: "ユーザー"
+  devise:
+    sessions:
+      signed_in: "今日のLookを選びましょう！"
+      signed_out: 'ログアウト完了しました'
+    failure:
+      account_locked: 'このアカウントは凍結されています(運営にお問い合わせください)'
+      not_found_in_database: 'アカウントが見つかりません。メールアドレスとパスワードをご確認下さい'
+      invalid: 'パスワードとメールアドレスを入力してください'
+    registrations:
+      signed_up: 'ユーザー登録が完了しました！Lookを投稿しましょう'
+  errors_account_updated: 'アカウントの更新に失敗しました。エラーをご確認ください'

@@ -1,0 +1,46 @@
+div.container.mt-4.mb-3
+  span.bg-info.p-1.text-white.mx-auto Profile editing
+  - if @user.errors.any?
+    div.alert.alert-warning align='center'
+      = pluralize(@user.errors.count, '件のエラーが発生しました')
+      ul
+        - @user.errors.full_messages.each do |message|
+          li style='list-style: none;' = message
+
+div.container
+  = form_with model: @user, url: users_user_path, local: true do |f|
+    table
+      tr.row.mt-3
+        td.mx-auto
+          = attachment_image_tag @user, :profile_image, size: '50x50',
+          class: 'rounded-circle profile-thumb', fallback: 'noimage.jpg', id: :img_prev
+        td.col-3
+          = f.attachment_field :profile_image
+      tr.row.mt-3
+        td.mx-auto
+          = f.label :nickname, 'ニックネーム'
+        td.col-3
+          = f.text_field :nickname, class: 'nickname'
+      tr.row.mt-3
+        td.mx-auto
+          = f.label :gender, '性別'
+        td.col-3
+          = f.select(:gender, options_for_select(['女性','男性','どちらでもない']))
+      tr.row.mt-3
+        td.mx-auto
+          = f.label :age, '年齢'
+        td.col-3
+          = f.select(:age, options_for_select(['10代','20代','30代','40代','50代以上']))
+      tr.row.mt-3
+        td.mx-auto
+          = f.label :introduction, '自己紹介'
+        td.col-3
+          = f.text_area :introduction, class: 'introduction'
+      tr.row.mt-3
+        td.mx-auto
+          = link_to 'マイページに戻る', users_user_path(current_user)
+        td.col-3
+          = f.submit '変更を保存', class: 'btn btn-primary btn-sm'
+      tr
+        td.text-center
+          = link_to 'メールアドレスまたはパスワード変更はこちら', edit_user_registration_path, class: 'btn btn-secondary btn-sm mt-3 mx-auto'

@@ -14,6 +14,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
 
+      ## Userdata
+      t.string :nickname, null: false
+      t.integer :gender
+      t.integer :age
+      t.string :email
+      t.string :introduction
+      t.string :profile_image_id
+      t.integer :validity, default: 1, null: false
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at
@@ -32,6 +41,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      # omniauthable
+      t.string :provider
+      t.string :uid
 
       t.timestamps null: false
     end

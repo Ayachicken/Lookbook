@@ -1,0 +1,29 @@
+div.container.mt-3
+  - if @inquiry.errors.any?
+    div.alert.alert-warning align='center'
+      = pluralize(@inquiry.errors.count, '件のエラーが発生しました')
+      ul
+        - @inquiry.errors.full_messages.each do |message|
+          li style='list-style: none;' = message
+
+  span.bg-info.text-white.p-1.rounded お問い合わせフォーム
+  div.container.border.border-dark.rounded.mt-3.mx-auto
+    = form_with model: @inquiry, url: users_inquiries_path, local: true do |f|
+      div.row.mt-3
+        div.col-4
+          = f.label :name, 'お名前'
+        div.col-6
+          = f.text_field :name, style: 'width: 400px;'
+      div.row
+        div.col-4
+          = f.label :message, 'お問い合わせ内容'
+        div.col-6
+          = f.text_area :message, style: 'width: 400px; height: 80px;'
+      div.row
+        div.col-4
+          = f.label :email, '返信先'
+        div.col-6
+          = f.text_field :email, style: 'width: 400px;'
+      div.row.mb-2.mt-3
+        div.col-12.text-center
+          = f.submit '送信する', class: 'btn btn-secondary btn-sm'

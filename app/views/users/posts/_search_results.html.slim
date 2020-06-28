@@ -1,0 +1,35 @@
+div.mt-3.ml-5
+  span.search_result.bg-info.text-white.p-1.rounded 投稿検索結果 "#{ @content }"
+
+div.container.mt-3.border.rounded
+  - if @posts.count == 0
+    div.container.mt-3.mb-3
+      p.text-center お探しの投稿は見つかりませんでした
+  - else
+    table.table.table-borderless.table-hover.table-inverse
+      thead
+        tr
+          th colspan='6'
+
+      tbody
+        - @posts.each do |posts|
+          tr
+            td
+              = attachment_image_tag(user, :profile_image, size: '40x40', fallback: 'noimage.jpg')
+            td
+              = user.nickname
+            td
+              p posts.title
+            td
+              p <i class="far fa-heart"></i> #{ user.follower_user.count }
+            td
+              - if user.id != current_user.id
+                - if current_user.following?(user)
+                  = link_to 'フォローを外す', users_unfollow_path(user), method: :post, class: 'btn btn-danger'
+                - else
+                  = link_to 'フォローする', users_follow_path(user), method: :post, class: 'btn btn-success'
+            td
+              - if user.id != current_user.id
+                = link_to '詳細', users_user_path(user)
+              - else
+                = link_to 'マイページ', users_user_path(user)

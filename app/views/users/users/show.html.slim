@@ -1,0 +1,32 @@
+div.container.mt-4
+  span.bg-info.p-1.text-white Profile
+  table
+    tr
+      td プロフィール画像
+      td
+        = attachment_image_tag @user, :profile_image, size: '100x100', fallback: 'noimage.jpg'
+    tr
+      td ニックネーム
+      td
+        = @user.nickname
+    tr
+      td 性別
+      td
+        = @user.gender
+    tr
+      td 年齢
+      td
+        = @user.age
+    tr
+      td 自己紹介
+      td
+        = @user.introduction
+    tr
+      td
+        - if @user.id == current_user.id
+          = link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm mt-2'
+        - if @user.id != current_user.id
+          - if current_user.following?(@user)
+            = link_to 'フォローを外す', users_unfollow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm p-1'
+          - else
+            = link_to 'フォローする', users_follow_path(@user.id), method: :post, class: 'btn btn-success btn-sm p-1'
