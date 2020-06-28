@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import 'bootstrap';
 
  @font-face{
@@ -33,7 +34,7 @@
   text-align: center;
 
   .notice {
-    background-color: Blue;
+    background-color: royalblue;
   }
 
   .alert {

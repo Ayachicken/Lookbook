@@ -8,6 +8,6 @@
 
 Admin.create!(
   name: 'ayachicken',
-  email: 'digimonmon.a@gmail.com',
-  password: 'boanouta'
+  email: ENV['ADMIN_MAIL'],
+  password: ENV['ADMIN_PASS']
 )
