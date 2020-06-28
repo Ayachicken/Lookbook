@@ -50,15 +50,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_154059) do
 
   create_table "photos", force: :cascade do |t|
     t.integer "post_id"
-    t.string "post_image_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "post_title", null: false
+    t.string "post_title", null: false
     t.text "posted_text", null: false
     t.integer "scene_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,7 +116,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_154059) do
     t.integer "age"
     t.string "introduction"
     t.string "profile_image_id"
-    t.integer "validity", default: 0, null: false
+    t.integer "validity", default: 1, null: false
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false

@@ -21,7 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :introduction
       t.string :profile_image_id
-      t.integer :validity, default: 0, null: false
+      t.integer :validity, default: 1, null: false
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

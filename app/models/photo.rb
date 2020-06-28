@@ -1,4 +1,4 @@
 class Photo < ApplicationRecord
   belongs_to :post
-  attachment :post_image
+  mount_uploader :image, ImageUploader
 end

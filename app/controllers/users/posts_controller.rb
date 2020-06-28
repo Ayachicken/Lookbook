@@ -3,20 +3,21 @@ class Users::PostsController < ApplicationController
   end
 
   def index
+    @top_posts = Post.find(Favorite.group(:id).order('count(:id) desc')).limit(5).pluck(:id)
   end
 
   def new
     @post = Post.new
-    @post.photos.build
+    @image = @post.photos.build
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
-      params[:photos]["post_image"].each do |image|
-        @image = @post.photos.create!(post_image: post_image)
+      params[:photos]["image"].each do |image|
+        @image = @post.photos.create!(image: image)
       end
-      redirect_to user_post_path(post_id), notice: '投稿完了しました！'
+      redirect_to users_post_path(@post), notice: '投稿完了しました！'
     else
       @post.photos.build
       render :new
@@ -29,7 +30,7 @@ class Users::PostsController < ApplicationController
 
   def update
     if @post = Post.update
-      redirect_to user_post_path(post_id), notice: '投稿編集完了しました！'
+      redirect_to users_post_path(@post), notice: '投稿編集完了しました！'
     else
       render :edit
     end
@@ -40,6 +41,6 @@ class Users::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_title, :posted_text, photos_attributes: [:post_image])
+    params.require(:post).permit(:post_title, :posted_text, photos_attributes: [:id]).merge(user_id: current_user.id)
   end
 end

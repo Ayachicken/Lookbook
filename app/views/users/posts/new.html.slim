@@ -2,17 +2,40 @@ div.container.mt-4.mb-3
   - if @post.errors.any?
     div.alert.alert-warning align='center'
       = pluralize(@post.errors.count, '件のエラーが発生しました')
-        ul
-          - @post.errors.full_messages.each do |message|
-            li style='list-style: none;' = message
+      ul
+        - @post.errors.full_messages.each do |message|
+          li style='list-style: none;'
+            = message
 
-div.container.form_field
+div.container-fluid.form_field
   = form_with model: @post, url: users_posts_path, local: true do |f|
-    h2.div.container-fulid.text-center.border あなたのLookを投稿する
-      div.container.post_form
-        div.row
-          = f.fields_for ":photos[:post_image]" do |i|
-            = attacment_image_tag ":photos[:post_image]"
+    h2.div.container-fulid.bg-info.text-white.text-center あなたのLookを投稿する
+    div.container.post_form
+      div.row
+        = f.fields_for ":photos[:post_image]" do |i|
+          div.col-lg-4.upload_image
+            label for='image1'
+              = image_tag 'noimage_tate.png', width: '100%', id: 'preview1', class: 'preview-image'
+            =i.file_field :image, multiple: true, id:'image1', type: "file", accept: "image/*", onchange: "previewImage1(this);", style: "display: none;", name: "photos[image][]"
+          div.col-lg-8
+            div.row.upload_image
+              div.col-lg-4
+                label for='image2'
+                  = image_tag 'noimage_square.png', width: '100%', id: 'preview2', class: 'preview-image'
+                =i.file_field :image, multiple: true, id:'image2', type: "file", accept: "image/*", onchange: "previewImage2(this);", style: "display: none;", name: "photos[image][]"
+              div.col-lg-4
+                label for='image3'
+                  = image_tag 'noimage_square.png', width: '100%', id: 'preview3', class: 'preview-image'
+                =i.file_field :image, multiple: true, id:'image3', type: "file", accept: "image/*", onchange: "previewImage3(this);", style: "display: none;", name: "photos[image][]"
+            div.row.upload_image
+              div.col-lg-4
+                label for='image4'
+                  = image_tag 'noimage_square.png', width: '100%', id: 'preview4', class: 'preview-image'
+                =i.file_field :image, multiple: true, id:'image4', type: "file", accept: "image/*", onchange: "previewImage4(this);", style: "display: none;", name: "photos[image][]"
+              div.col-lg-4
+                label for='image5'
+                  = image_tag 'noimage_square.png', width: '100%', id: 'preview5', class: 'preview-image'
+                =i.file_field :image, multiple: true, id:'image5', type: "file", accept: "image/*", onchange: "previewImage5(this);", style: "display: none;", name: "photos[image][]"
         div.row
           div.col-4
             = f.label :post_title, '投稿のタイトルを入力してください'

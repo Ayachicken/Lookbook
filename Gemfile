@@ -83,6 +83,9 @@ gem 'enum_help'
 # ↓画像アップロード用
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+# ↓どうしても画像の複数投稿がcarrierwaveでしか行えなかった
+gem 'carrierwave'
+gem 'mini_magick'
 # ↓ページング
 gem 'kaminari'
 gem 'better_errors'
