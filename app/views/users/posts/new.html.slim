@@ -15,26 +15,26 @@ div.container-fluid.form_field
         = f.fields_for ":photos[:post_image]" do |i|
           div.col-lg-4.upload_image
             label for='image1'
-              = image_tag asset_path('noimage_tate.png'), height: '50%', id: 'preview1', class: 'preview-image'
+              = image_tag 'noimage_tate.png', height: '50%', id: 'preview1', class: 'preview-image'
             =i.file_field :image, multiple: true, id:'image1', type: "file", accept: "image/*", onchange: "previewImage1(this);", style: "display: none;", name: "photos[image][]"
           div.col-lg-8
             div.row.upload_image
               div.col-lg-4
                 label for='image2'
-                  = image_tag asset_path('noimage_square.png'), height: '50%', id: 'preview2', class: 'preview-image'
+                  = image_tag 'noimage_square.png', height: '50%', id: 'preview2', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image2', type: "file", accept: "image/*", onchange: "previewImage2(this);", style: "display: none;", name: "photos[image][]"
               div.col-lg-4
                 label for='image3'
-                  = image_tag asset_path('noimage_square.png'), height: '50%', id: 'preview3', class: 'preview-image'
+                  = image_tag 'noimage_square.png', height: '50%', id: 'preview3', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image3', type: "file", accept: "image/*", onchange: "previewImage3(this);", style: "display: none;", name: "photos[image][]"
             div.row.upload_image
               div.col-lg-4
                 label for='image4'
-                  = image_tag asset_path('noimage_square.png'), height: '50%', id: 'preview4', class: 'preview-image'
+                  = image_tag 'noimage_square.png', height: '50%', id: 'preview4', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image4', type: "file", accept: "image/*", onchange: "previewImage4(this);", style: "display: none;", name: "photos[image][]"
               div.col-lg-4
                 label for='image5'
-                  = image_tag asset_path('noimage_square.png'), height: '50%', id: 'preview5', class: 'preview-image'
+                  = image_tag 'noimage_square.png', height: '50%', id: 'preview5', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image5', type: "file", accept: "image/*", onchange: "previewImage5(this);", style: "display: none;", name: "photos[image][]"
         div.row
           div.col-4
