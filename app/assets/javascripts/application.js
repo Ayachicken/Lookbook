@@ -16,3 +16,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+    $('.slider').bxSlider({
+        auto: true,
+        pause: 5000,
+    });
+});

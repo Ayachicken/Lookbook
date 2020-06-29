@@ -10,44 +10,41 @@ div.container.mt-4.mb-3
 div.container-fluid.form_field
   = form_with model: @post, url: users_posts_path, local: true do |f|
     h2.div.container-fulid.bg-info.text-white.text-center あなたのLookを投稿する
-    div.container.post_form
+    div.container.photo_form
       div.row
         = f.fields_for ":photos[:post_image]" do |i|
-          div.col-lg-4.upload_image
+          div.col-lg-4.upload_image.off-set-2
             label for='image1'
-              = image_tag asset_path('noimage_tate.png', height: '50%', id: 'preview1', class: 'preview-image')
+              = image_tag asset_path('noimage_tate.png'), width: '100%', id: 'preview1', class: 'preview-image'
             =i.file_field :image, multiple: true, id:'image1', type: "file", accept: "image/*", onchange: "previewImage1(this);", style: "display: none;", name: "photos[image][]"
           div.col-lg-8
-            div.row.upload_image
+            div.row.upload_image.justify-content-center
               div.col-lg-4
                 label for='image2'
-                  = image_tag asset_path('noimage_square.png', height: '50%', id: 'preview2', class: 'preview-image')
+                  = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview2', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image2', type: "file", accept: "image/*", onchange: "previewImage2(this);", style: "display: none;", name: "photos[image][]"
               div.col-lg-4
                 label for='image3'
-                  = image_tag asset_path('noimage_square.png', height: '50%', id: 'preview3', class: 'preview-image')
+                  = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview3', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image3', type: "file", accept: "image/*", onchange: "previewImage3(this);", style: "display: none;", name: "photos[image][]"
-            div.row.upload_image
+            div.row.upload_image.justify-content-center
               div.col-lg-4
                 label for='image4'
-                  = image_tag asset_path('noimage_square.png', height: '50%', id: 'preview4', class: 'preview-image')
+                  = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview4', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image4', type: "file", accept: "image/*", onchange: "previewImage4(this);", style: "display: none;", name: "photos[image][]"
               div.col-lg-4
                 label for='image5'
-                  = image_tag asset_path('noimage_square.png', height: '50%', id: 'preview5', class: 'preview-image')
+                  = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview5', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image5', type: "file", accept: "image/*", onchange: "previewImage5(this);", style: "display: none;", name: "photos[image][]"
-        div.row
-          div.col-4
-            = f.label :post_title, '投稿のタイトルを入力してください'
-        div.row
-          div.col-6
-            = f.text_field :post_title, style: 'width: 100%;'
-        div.row
-          div.col-4
-            = f.label :posted_text, '投稿文を入力してください'
-        div.row
-          div.col-6
-            = f.text_area :posted_text, placeholder: 'あなたのLookのポイントを教えてください 例)化粧はピンクを基調として、タレ目を意識しました。ファッションはレースを多く使って、好きな人とのデートにおすすめです。', style: 'width: 100%; height: 5em;'
-        div.row
-          div.col-10
-            = f.submit '投稿する！', class: 'btn btn-sm btn-success mt-4'
+
+    div.container.text-form style='width:800px;'
+      div.row
+          = f.label :post_title, '投稿のタイトルを入力してください'
+      div.row.justify-content-center
+          = f.text_field :post_title, style: 'width: 100%;'
+      div.row
+          = f.label :posted_text, '投稿文を入力してください'
+      div.row.justify-content-center
+          = f.text_area :posted_text, placeholder: 'あなたのLookのポイントを教えてください 例)化粧はピンクを基調として、タレ目を意識しました。ファッションはレースを多く使って、好きな人とのデートにおすすめです。', style: 'width: 100%; height: 5em;'
+      div.row.justify-content-center
+          = f.submit '投稿する！', class: 'btn btn-sm btn-success mt-4'

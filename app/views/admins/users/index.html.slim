@@ -4,13 +4,15 @@ div.container.mt-4
     table.table.table-borderless.table-hover.table-inverse
       thead
         tr
-          th colspan='5'
+          th colspan='6'
 
       tbody
         - @users.each do |user|
           tr
             td
-              = user.id
+              = "ID: #{user.id}"
+            td
+              = user.created_at.strftime('%Y/%m/%d')
             td
               = attachment_image_tag(user, :profile_image, size: '40x40', fallback: 'noimage.jpg')
             td

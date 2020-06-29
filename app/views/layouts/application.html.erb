@@ -10,7 +10,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,7 +18,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
         <%= link_to root_path do %>
-          <%= image_tag asset_path('Lookbook_logo.jpeg', style: 'width:200px;') %>
+          <%= image_tag asset_path('Lookbook_logo.jpeg'), style: 'width:200px;' %>
         <% end %>
       <button type="button" class="navbar-toggler mr-3" data-toggle="collapse" data-target="#Naviber"
               aria-controls="Naviber" aria-expanded="false" aria-label="ナビゲーションの切替">
@@ -40,7 +39,7 @@
             <%= link_to 'Mypage', users_user_path(current_user), class: 'text-dark' %>
           </li>
           <li class="nav-item mr-3">
-            <%= image_tag asset_path('Boots.png', style: 'height:30px;') %>
+            <%= image_tag asset_path('Boots.png'), style: 'height:30px;' %>
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'text-dark' %>
           </li>
           <li class="nav-item mr-5 btn btn-info">
@@ -70,11 +69,11 @@
         <% else %>
           <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-3">
-            <%= image_tag asset_path('Perfume.png', style: 'height:30px;') %>
+            <%= image_tag asset_path('Perfume.png'), style: 'height:30px;' %>
             <%= link_to 'Sign Up', new_user_registration_path, class: 'text-dark' %>
           </li>
           <li class="nav-item mr-5">
-            <%= image_tag asset_path('Bag.png', style: 'height:30px;') %>
+            <%= image_tag asset_path('Bag.png'), style: 'height:30px;' %>
             <%= link_to 'Sign In', new_user_session_path, class:'text-dark' %>
           </li>
           </ul>
@@ -103,7 +102,7 @@
         <%= content_tag(:div, value, class: key) %>
       <% end %>
     </div>
-    <main style='height: 800px;'>
+    <main style='height: 1500px;'>
     <%= yield %>
     </main>
     <footer>
@@ -117,5 +116,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
   </body>
 </html>
