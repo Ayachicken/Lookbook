@@ -1,0 +1,21 @@
+div.container.mt-4
+  div.mx-auto style='width: 700px;'
+    span.bg-info.text-white.p-1.justify-content-center シーン一覧
+    = link_to new_admins_scene_path, class: 'ml-auto fas fa-plus-square', style: 'color: lightslategray;'
+    table.table.table-borderless.table-hover.table-inverse
+      thead
+        tr
+          th colspan='6'
+
+      tbody
+        - @scenes.each do |scene|
+          tr
+            td
+              = scene.scene_name
+            td
+              = scene.created_at.strftime('%Y/%m/%d')
+            td
+              - if scene.validity == 0
+                = link_to '公開する', admins_scene_path(scene_id), method: :patch
+              - elsif scene.validity == 0
+                = link_to '非公開にする', admins_scene_path(scene_id), method: :patch
