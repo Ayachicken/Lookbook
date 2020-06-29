@@ -1,32 +1,40 @@
 div.container.mt-4
-  span.bg-info.p-1.text-white Profile
-  table
-    tr
-      td プロフィール画像
-      td
-        = attachment_image_tag @user, :profile_image, size: '100x100', fallback: 'noimage.jpg'
-    tr
-      td ニックネーム
-      td
+  div.mb-2
+    span.bg-info.p-1.text-white.ml-3 Profile
+  div.row.justify-content-center
+    div.col-4
+      = attachment_image_tag @user, :profile_image, size: '200x200', fallback: 'noimage.jpg', class: 'rounded-circle'
+    div.col-7
+      div.row
         = @user.nickname
-    tr
-      td 性別
-      td
+      div.row
         = @user.gender
-    tr
-      td 年齢
-      td
+        p   ・
         = @user.age
-    tr
-      td 自己紹介
-      td
+      div.row
         = @user.introduction
-    tr
-      td
-        - if @user.id == current_user.id
-          = link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm mt-2'
+      div.row
         - if @user.id != current_user.id
           - if current_user.following?(@user)
             = link_to 'フォローを外す', users_unfollow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm p-1'
           - else
             = link_to 'フォローする', users_follow_path(@user.id), method: :post, class: 'btn btn-success btn-sm p-1'
+      div.row.mt-3
+        - if @user.id == current_user.id
+          = link_to 'プロフィール編集', edit_users_user_path, class: 'btn btn-primary btn-sm mt-2'
+
+h4.text-center.mt-3 #{@user.nickname} さんのLooks
+div.container.user_posts
+div.row.justify-content-center
+  - @posts.each do |post|
+    div.col-3.border.mr-5.mt-5 align='center'
+      - post.photos.first(1).each do |photo|
+        = image_tag photo.image.to_s, width: '90%', class: 'mt-3'
+      div.row.mt-2.mb-2.text-center style= 'width: 80%'
+        = link_to "#{post.post_title}", users_post_path(post), class: 'text-dark'
+      div.row.mb-3
+        div.col-4
+          = attachment_image_tag post.user, :profile_image, width: '90%', fallback: 'noimage.jpg',
+           class: 'rounded-circle'
+        div.col-7
+          = post.user.nickname

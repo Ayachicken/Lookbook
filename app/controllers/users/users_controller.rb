@@ -5,7 +5,7 @@ class Users::UsersController < ApplicationController
   end
 
   def index
-    @top_users = User.top_users
+    @top_users = User.all.order('count(follower_id) desc').limit(12)
   end
 
   def edit
