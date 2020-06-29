@@ -1,7 +1,20 @@
-div.container-fluid
+div.container-fluid.mt-3
   div.slider
     = image_tag asset_path('top_cosme.png')
     = image_tag asset_path('Accessory.png')
     = image_tag asset_path('Onepiece.png')
 
-  div
+  h4.text-center.mt-3 ～新着投稿～
+  div.container
+    div.row.justify-content-center
+      - @posts_new.each do |post|
+        div.col-3.border.mr-5.mt-5 align='center'
+          - post.photos.first(1).each do |photo|
+            = image_tag photo.image.to_s, width: '90%', class: 'mt-3'
+          div.row.mt-2.mb-2.text-center style= 'width: 80%'
+            = link_to "#{post.post_title}", users_post_path(post), class: 'text-dark'
+          div.row
+            div.col-4
+              = attachment_image_tag post.user, :profile_image, width: '90%', fallback: 'noimage.jpg'
+            div.col-7
+              = post.user.nickname

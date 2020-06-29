@@ -9,6 +9,7 @@ class Users::PostsController < ApplicationController
   def new
     @post = Post.new
     @image = @post.photos.build
+    @scene = Scene.all
   end
 
   def create

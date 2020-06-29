@@ -1,5 +1,5 @@
 # Lookbook
-![Lookbook](https://github.com/Ayachicken/Lookbook/blob/develop/app/assets/images/Lookbook%E3%83%AD%E3%82%B4%EF%BC%88%E4%BB%AE%EF%BC%89.jpeg)
+![Lookbook](https://github.com/Ayachicken/Lookbook/blob/master/app/assets/images/Lookbook_logo.jpeg)
 ## サイト概要
 おしゃれしたいが初めてで何をしたらいいか分からない方に送る  
 おしゃれさんのコーデ（洋服・ネイル・化粧・アクセサリー）を  
@@ -29,6 +29,21 @@ Ruby 2.6.6,Rails 5.2.4.3
   作業効率の低下を懸念し、次に新しい安定版である2.6.6を用いました。  
   また、Railsについては最新のバージョン6だとRails Tutorialが有料であり、  
   公式の情報も5のほうが充実していると考え、5.2.4.3を用いました。）
+
+### UIFlow図 管理者側
+https://drive.google.com/file/d/1pOQlhcIy4ZAJsXYc3kq8-dlOD_FhOgjL/view?usp=sharing
+
+### UIFlow図 ユーザー側
+https://drive.google.com/file/d/1BoU0BKitb4gJzDaIoZIZSjGmcxhzaR9U/view?usp=sharing
+
+### ER図
+https://drive.google.com/file/d/1qBkbfwEFAL27XPi2JfqW4X0s2TapQM6H/view?usp=sharing
+
+### データベース設計図
+https://drive.google.com/file/d/1uxza3JJS2TQbzrbQyoC627Tk5VjJtndm/view?usp=sharing
+
+### アプリケーション詳細設計
+https://drive.google.com/file/d/1rw0FDmzKbITP89xd82lpLjGi22CQHj_B/view?usp=sharing
 
 ### Gemについて
 

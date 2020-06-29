@@ -64,9 +64,4 @@ class User < ApplicationRecord
       user.profile_image = auth.info.image
     end
   end
-
-  # フォロワー数ランキング
-  def self.top_users
-    User.order(:follower).limit(10).pluck(:id, :nickname, :introduction, :profile_image, :follower)
-  end
 end

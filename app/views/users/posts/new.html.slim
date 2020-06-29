@@ -38,13 +38,17 @@ div.container-fluid.form_field
                 =i.file_field :image, multiple: true, id:'image5', type: "file", accept: "image/*", onchange: "previewImage5(this);", style: "display: none;", name: "photos[image][]"
 
     div.container.text-form style='width:800px;'
+      div.row.mt-2
+        = f.label :post_title, '投稿のタイトルを入力してください'
+      div.row.justify-content-center
+        = f.text_field :post_title, style: 'width: 100%;'
+      div.row.mt-2
+        = f.label :posted_text, '投稿文を入力してください'
+      div.row.justify-content-center
+        = f.text_area :posted_text, placeholder: 'あなたのLookのポイントを教えてください 例)化粧はピンクを基調として、タレ目を意識しました。ファッションはレースを多く使って、好きな人とのデートにおすすめです。', style: 'width: 100%; height: 5em;'
+      div.row.mt-2
+        = f.label :scene_name, '投稿ジャンルを選んで下さい'
       div.row
-          = f.label :post_title, '投稿のタイトルを入力してください'
+        = f.collection_select(:scene_name, @scene, :id, :scene_name, width: '100%')
       div.row.justify-content-center
-          = f.text_field :post_title, style: 'width: 100%;'
-      div.row
-          = f.label :posted_text, '投稿文を入力してください'
-      div.row.justify-content-center
-          = f.text_area :posted_text, placeholder: 'あなたのLookのポイントを教えてください 例)化粧はピンクを基調として、タレ目を意識しました。ファッションはレースを多く使って、好きな人とのデートにおすすめです。', style: 'width: 100%; height: 5em;'
-      div.row.justify-content-center
-          = f.submit '投稿する！', class: 'btn btn-sm btn-success mt-4'
+        = f.submit '投稿する！', class: 'btn btn-sm btn-success mt-4'

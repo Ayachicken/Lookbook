@@ -1,16 +1,13 @@
 class Admins::ScenesController < ApplicationController
   def index
-    @scenes = Scene.all
-  end
-
-  def new
     @scene = Scene.new
+    @scenes = Scene.all
   end
 
   def create
     @scene = Scene.new(scene_params)
     if @scene.save
-      redirect_to admins_scene_path(@scene)
+      redirect_to admins_scenes_path
     else
       render :new
     end
@@ -34,6 +31,6 @@ class Admins::ScenesController < ApplicationController
 
   private
   def scene_params
-    params.reqire(:scene).permit(:scene_name)
+    params.require(:scene).permit(:scene_name)
   end
 end

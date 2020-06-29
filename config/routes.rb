@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :posts, only:[:index, :show, :destroy]
-    resources :scenes, only:[:index, :new, :create, :update, :destroy]
+    resources :scenes, only:[:index, :create, :update, :destroy]
     resources :users, only:[:index]
     patch 'users/:id' => 'users#suspend',as: 'suspend_user'
     get 'top' => 'homes#top',as: 'top'

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :scene
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos
   has_many :favorites, dependent: :destroy

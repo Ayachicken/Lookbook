@@ -1,8 +1,17 @@
 div.container.mt-4
   div.mx-auto style='width: 700px;'
     span.bg-info.text-white.p-1.justify-content-center シーン一覧
-    
-    = link_to new_admins_scene_path
+
+    div.container.scene_form.mt-3
+          = form_with model: @scene, url: admins_scenes_path, local: true do |f|
+            div.row
+            = f.label :scene_name, '特集したいファッションシーン'
+            div.row
+            = f.text_field :scene_name, placeholder: '特集したいファッションシーンを入力してください', style: 'width: 100%;'
+            div.row.mt-2
+              span.ml-auto.mr-2
+                = f.submit '追加', class: 'btn btn-primary', style: 'border-radius: 0.3em;'
+
     table.table.table-borderless.table-hover.table-inverse
       thead
         tr
@@ -17,6 +26,6 @@ div.container.mt-4
               = scene.created_at.strftime('%Y/%m/%d')
             td
               - if scene.validity == 0
-                = link_to '公開する', admins_scene_path(scene_id), method: :patch
-              - elsif scene.validity == 0
-                = link_to '非公開にする', admins_scene_path(scene_id), method: :patch
+                = link_to '公開する', admins_scene_path(scene), method: :patch
+              - elsif scene.validity == 1
+                = link_to '非公開にする', admins_scene_path(scene), method: :patch

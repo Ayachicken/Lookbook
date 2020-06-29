@@ -38,4 +38,6 @@ ja:
       invalid: 'パスワードとメールアドレスを入力してください'
     registrations:
       signed_up: 'ユーザー登録が完了しました！Lookを投稿しましょう'
+    omniauth_callbacks:
+      success: 'SNSログインが成功しました！Lookを投稿しましょう'
   errors_account_updated: 'アカウントの更新に失敗しました。エラーをご確認ください'
