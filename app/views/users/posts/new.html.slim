@@ -13,26 +13,26 @@ div.container-fluid.form_field
     div.container.photo_form
       div.row
         = f.fields_for ":photos[:post_image]" do |i|
-          div.col-lg-4.upload_image.off-set-2
+          div.col-4.upload_image.off-set-2
             label for='image1'
               = image_tag asset_path('noimage_tate.png'), width: '100%', id: 'preview1', class: 'preview-image'
             =i.file_field :image, multiple: true, id:'image1', type: "file", accept: "image/*", onchange: "previewImage1(this);", style: "display: none;", name: "photos[image][]"
-          div.col-lg-8
+          div.col-8
             div.row.upload_image.justify-content-center
-              div.col-lg-4
+              div.col-4
                 label for='image2'
                   = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview2', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image2', type: "file", accept: "image/*", onchange: "previewImage2(this);", style: "display: none;", name: "photos[image][]"
-              div.col-lg-4
+              div.col-4
                 label for='image3'
                   = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview3', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image3', type: "file", accept: "image/*", onchange: "previewImage3(this);", style: "display: none;", name: "photos[image][]"
             div.row.upload_image.justify-content-center
-              div.col-lg-4
+              div.col-4
                 label for='image4'
                   = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview4', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image4', type: "file", accept: "image/*", onchange: "previewImage4(this);", style: "display: none;", name: "photos[image][]"
-              div.col-lg-4
+              div.col-4
                 label for='image5'
                   = image_tag asset_path('noimage_square.png'), width: '100%', id: 'preview5', class: 'preview-image'
                 =i.file_field :image, multiple: true, id:'image5', type: "file", accept: "image/*", onchange: "previewImage5(this);", style: "display: none;", name: "photos[image][]"

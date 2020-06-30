@@ -1,2 +1,6 @@
 div.container.post_show
-  
+  div.row
+      - @post.photos.each do |image|
+        div.col-8
+        = image_tag images.to_s
+        

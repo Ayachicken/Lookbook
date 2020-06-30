@@ -3,7 +3,7 @@ div.container.mt-4
     span.bg-info.p-1.text-white.ml-3 Profile
   div.row.justify-content-center
     div.col-4
-      = attachment_image_tag @user, :profile_image, size: '200x200', fallback: 'noimage.jpg', class: 'rounded-circle'
+      = attachment_image_tag asset_path @user, :profile_image, size: '200x200', fallback: 'noimage.jpg', class: 'rounded-circle'
     div.col-7
       div.row
         = @user.nickname

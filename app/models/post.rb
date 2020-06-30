@@ -10,4 +10,9 @@ class Post < ApplicationRecord
 
   validates :post_title, presence: true
   validates :posted_text, presence: true
+
+  # ポスト検索
+  def self.search(search, user_or_post)
+    Post.where(['post_title LIKE?',"%#{search}%"])
+  end
 end

@@ -1,6 +1,12 @@
-div.container style='width: 100%;'
-  - @top_users.each do |users|
-    div.row
-      div.col-4
-        div.row
-          =
+h5.mt-3.text-center －総合ユーザーランキング－
+div.container
+  div.row.justify-content-center
+    - @top_users.each do |user|
+      div.col-3.border.mr-5.mt-5 align='center'
+        = attachment_image_tag user, :profile_image, width: '90%', fallback: 'noimage.jpg', class: 'mt-3'
+        div.row.mt-2.text-center style= 'width: 80%'
+          = link_to "#{user.nickname}", users_user_path(user), class: 'text-dark', style: 'font-weight: 600;'
+        div.row.mt-2.ml-4.mb-2.mt-2
+          i.fas.fa-user
+          = "　#{user.follower_user.count}"
+          i.far.fa-heart.ml-4
