@@ -49,6 +49,6 @@ div.container-fluid.form_field
       div.row.mt-2
         = f.label :scene_name, '投稿ジャンルを選んで下さい'
       div.row
-        = f.collection_select(:scene_name, @scene, :id, :scene_name, width: '100%')
+        = f.collection_select :scene_id, @scenes, :id, :scene_name
       div.row.justify-content-center
         = f.submit '投稿する！', class: 'btn btn-sm btn-success mt-4'

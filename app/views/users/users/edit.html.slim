@@ -35,7 +35,7 @@ div.container
         td.mx-auto
           = f.label :introduction, '自己紹介'
         td.col-3
-          = f.text_area :introduction, class: 'introduction'
+          = f.text_area :introduction, style: 'width: 400px;'
       tr.row.mt-3
         td.mx-auto
           = link_to 'マイページに戻る', users_user_path(current_user)

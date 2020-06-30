@@ -1,4 +1,6 @@
 class Users::PostsController < ApplicationController
+before_action :set_scenes, only:[:new, :create, :edit, :update]
+
   def show
     @post = Post.find(params[:id])
   end
@@ -10,7 +12,6 @@ class Users::PostsController < ApplicationController
   def new
     @post = Post.new
     @image = @post.photos.build
-    @scene = Scene.all
   end
 
   def create
@@ -43,6 +44,10 @@ class Users::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_title, :posted_text, photos_attributes: [:id]).merge(user_id: current_user.id)
+    params.require(:post).permit(:post_title, :posted_text, :scene_id, photos_attributes: [:id]).merge(user_id: current_user.id)
+  end
+
+  def set_scenes
+    @scenes = Scene.all
   end
 end

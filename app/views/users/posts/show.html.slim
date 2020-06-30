@@ -1,6 +1,34 @@
-div.container.post_show
+div.container.post_images.mt-4
   div.row
-      - @post.photos.each do |image|
+      - @post.photos.first(1).each do |photo|
+        div.col-4.my-auto
+          = image_tag photo.image.to_s, width: '100%', class: 'img-thumbnail'
         div.col-8
-        = image_tag images.to_s
-        
+          div.row
+            - @post.photos[1..-1].each do |photo|
+              div.col-6 style='height: 50%;'
+                = image_tag photo.image.to_s, width: '100%', class: 'img-thumbnail'
+
+div.container.post_information.mt-3
+  div.row
+    div.col-4
+      = attachment_image_tag @post.user, :profile_image, size: '150x150',fallback: 'noimage.jpg', class: 'rounded-circle'
+    div.col-7
+      div.row
+        = link_to "#{@post.user.nickname}", users_user_path(@post.user), class: 'text-dark'
+      div.row.mt-2
+        = @post.user.gender
+        p 　・
+        = @post.user.age
+      div.row
+        = "follower: #{@post.user.follower.count}"
+        p 　　
+        = "favorites: #{@post.favorites.count}"
+  div.container.mx-auto
+    div.row.mt-2
+      = @post.post_title
+    div.row.mt-2
+      span.border.border-secondary.rounded-pill.bg-light.p-2
+        = @post.scene.scene_name
+    div.row.mt-2
+      = @post.posted_text
