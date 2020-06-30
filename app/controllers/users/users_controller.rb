@@ -5,7 +5,7 @@ class Users::UsersController < ApplicationController
   end
 
   def index
-    @top_users = User.find(Relationship.group(:id).order('count(follower_id) desc').limit(6).pluck(:id))
+    @top_users = User.find(Relationship.group(:follow_id).order('count(follower_id) desc').limit(6).pluck(:follow_id))
   end
 
   def edit
