@@ -1,0 +1,20 @@
+.container.border.rounded.border-dark[style="margin-top: 100px; width: 500px;"]
+  .form_field.text-center.mb-3.mt-4[style="width: 500px;"]
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .field
+        = f.label :password
+        br
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "Log in", class: 'page-link text-dark d-inline-block font-weight-bold'
+      .actions.mt-2
+        = link_to "  Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: 'fab fa-google btn btn-primary btn-sm'
+    = render "users/shared/links", class: 'mt-3'

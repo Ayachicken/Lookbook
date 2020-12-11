@@ -1,0 +1,43 @@
+.container.mt-3.mx-auto
+  span.bg-info.text-white.p-1
+    | ユーザー情報の更新
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "users/shared/error_messages", resource: resource
+    .field.mt-2
+      = f.label :email, '新しいメールアドレス'
+      br
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      div
+        | Currently waiting confirmation for: 
+        = resource.unconfirmed_email
+    .field.mt-1
+      = f.label :password, '新しいパスワード'
+      i
+        | (変更しない場合、空欄にしてください)
+      br
+      = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+        span.bg-danger.text-white.p-1
+          = @minimum_password_length
+          | 文字以上で設定してください
+    .field.mt-1
+      = f.label :password_confirmation, 'パスワードの確認'
+      br
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .field.mt-1
+      = f.label :current_password, '現在のパスワードを入力してください'
+      br
+      = f.password_field :current_password, autocomplete: "current-password"
+    .actions.mt-1.mx-auto
+      = f.submit "更新する", class: 'btn btn-primary btn-sm'
+  .mt-4
+    span.bg-secondary.text-light.p-1
+      | 退会はこちら
+    table.mt-3
+      tr
+        td
+          = button_to "退会する", user_registration_path(@user), data: { confirm: "本当に退会しますか？" },
+          -           method: :delete, class: 'btn btn-danger btn-sm'
+        td.col-3
+          = link_to "戻る", users_user_path(@user)

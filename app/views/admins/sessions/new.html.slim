@@ -1,0 +1,14 @@
+h4.container-fulid.text-center.mt-3
+  | 管理者用ログイン
+.container.text-center.admins_login
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email, 'メールアドレス'
+      br
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field
+      = f.label :password, 'パスワード'
+      br
+      = f.password_field :password, autocomplete: "current-password"
+    .actions
+      = f.submit "Log in", class: 'mt-3'

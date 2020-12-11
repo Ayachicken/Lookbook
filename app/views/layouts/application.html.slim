@@ -1,0 +1,93 @@
+doctype html
+html[lang="ja"]
+  head
+    title
+      | Lookbook
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"]
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header
+      nav.navbar.navbar-expand-lg.navbar-light.bg-white.p-0
+        = link_to root_path, data: {"turbolinks" => false} do
+          = image_tag asset_path('Lookbook_logo.jpeg'), style: 'width:200px;'
+        button.navbar-toggler.mr-3[type="button" data-toggle="collapse" data-target="#Naviber" aria-controls="Naviber" aria-expanded="false" aria-label="ナビゲーションの切替"]
+          span.navbar-toggler-icon
+        #Naviber.collapse.navbar-collapse
+          ul.navbar-nav.ml-4
+            = form_with url:'/users/search',method: :get,local: true do |f|
+              = f.text_field :search, placeholder: 'Search User or Post'
+              = select_tag(:option, options_for_select([['USER','1'],['POST','2']]))
+              = submit_tag 'Search', class:'btn btn-info btn-sm'
+          - if user_signed_in?
+            ul.navbar-nav.ml-auto
+              li.nav-item.mr-3
+                i.fas.fa-user-circle
+                = link_to 'Mypage', users_user_path(current_user), class: 'text-dark'
+              li.nav-item.mr-3
+                = image_tag asset_path('Boots.png'), style: 'height:30px;'
+                = link_to 'Sign out', destroy_user_session_path, method: :delete, class:'text-dark'
+              li.nav-item.mr-5.btn.btn-info
+                i.fas.fa-pen-alt
+                = link_to ' 投稿', new_users_post_path, class: 'text-light'
+          - elsif admin_signed_in?
+            ul.navbar-nav.ml-auto
+              li.nav-item.mr-3
+                i.fas.fa-list
+                = link_to 'シーン', admins_scenes_path, class: 'text-dark'
+              li.nav-item.mr-3
+                i.fas.fa-users
+                = link_to 'ユーザー', admins_users_path, class:'text-dark'
+              li.nav-item.mr-3
+                i.far.fa-folder-open
+                = link_to 'ポスト', admins_posts_path, class: 'text-dark'
+              li.nav-item.mr-5
+                i.fas.fa-sign-out-alt
+                = link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'text-dark'
+          - else
+            ul.navbar-nav.ml-auto
+              li.nav-item.mr-3
+                = image_tag asset_path('Perfume.png'), style: 'height:30px;'
+                = link_to 'Sign Up', new_user_registration_path, class: 'text-dark'
+              li.nav-item.mr-5
+                = image_tag asset_path('Bag.png'), style: 'height:30px;'
+                = link_to 'Sign In', new_user_session_path, class:'text-dark'
+      .container-fluid.bg-info.sub-nav[style="height: 3.5em;"]
+        - if admin_signed_in?
+
+        - else
+          ul.nav.justify-content-center[style="padding-top: 1em;"]
+            li.nav-item.mr-4
+              = link_to 'Scene', users_scenes_path, class: 'text-light'
+            li.nav-item.mr-4
+              = link_to 'Top Users', users_users_path, class:'text-light'
+            li.nav-item
+              = link_to 'Top Posts', users_posts_path, class:'text-light'
+    .notifications
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
+    main[style="min-height: 80vh; height: 100%; margin-bottom: 30px;"]
+      = yield
+    footer
+      ul.footer-menu
+        li
+          = link_to 'Home', root_path,class: 'text-white',data: {"turbolinks" => false}
+          |  ｜
+        li
+          = link_to 'Lookbookの使い方', users_help_path, class: 'text-white'
+          |  ｜
+        li
+          = link_to 'お問い合わせ', new_users_inquiry_path, class: 'text-white'
+      p.m-0
+        | © All rights reserved by Ayachicken.
+    script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"]
+    script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"]
+    link[rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"]
+    script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"]
+    script[src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"]
+    link[rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous"]
