@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
+         :recoverable, :rememberable,
+         # :validatable, <= メールアドレスを一意にすると引っかかるためコメントアウト
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_many :sns_credentials, dependent: :destroy
@@ -51,6 +52,22 @@ class User < ApplicationRecord
   # ユーザー検索
   def self.search(search, user_or_post)
     User.where(['nickname LIKE?',"%#{search}%"])
+  end
+
+  #↓3つのメソッドはユーザーデータの論理削除
+  #deleted_atカラムをタイムスタンプで更新
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  #ユーザーアカウントが有効であるか確認
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  #削除したユーザーにカスタムメッセージを追加
+  def inactive_message
+    !deleted_at ? super : :deleted_account
   end
 
   # Omniauth login
