@@ -1,0 +1,22 @@
+.container
+  span.bg-info.text-white.p-1
+    | パスワードの変更
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = render "users/shared/error_messages", resource: resource
+    = f.hidden_field :reset_password_token
+    .field
+      = f.label :password, "新しいパスワード"
+      - if @minimum_password_length
+        span.bg-danger.text-white.p-1
+          |  (
+          = @minimum_password_length
+          | 文字以上で設定してください) 
+        br
+      = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード"
+    .field
+      = f.label :password_confirmation, "新しいパスワードの再入力"
+      br
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .actions
+      = f.submit "パスワードの更新", class: 'btn btn-primary'
+  = render "users/shared/links"
