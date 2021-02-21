@@ -9,7 +9,7 @@
       = f.email_field :email, autofocus: true, autocomplete: "email"
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       div
-        | Currently waiting confirmation for: 
+        | Currently waiting confirmation for:
         = resource.unconfirmed_email
     .field.mt-1
       = f.label :password, '新しいパスワード'
@@ -37,7 +37,6 @@
     table.mt-3
       tr
         td
-          = button_to "退会する", user_registration_path(@user), data: { confirm: "本当に退会しますか？" },
-          -           method: :delete, class: 'btn btn-danger btn-sm'
+          = button_to "退会する", users_user_path(@user), data: { confirm: "本当に退会しますか？" }, method: :delete, class: 'btn btn-danger btn-sm'
         td.col-3
           = link_to "戻る", users_user_path(@user)
