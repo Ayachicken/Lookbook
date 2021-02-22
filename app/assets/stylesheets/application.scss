@@ -17,8 +17,10 @@
  @import 'bootstrap';
 
  @font-face{
-   font-family: "Hannary Mincho";
-   src: asset_url('Hannari.otf') format('opentype');
+   font-family: "Honoka Mincho";
+   src: asset_url('font_1_honokamin.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
  }
 
 .nav{

@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_154059) do
     t.string "introduction"
     t.string "profile_image_id"
     t.integer "validity", default: 1, null: false
+    t.datetime "deleted_at"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false

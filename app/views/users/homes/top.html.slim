@@ -4,7 +4,8 @@ div.container-fluid.mt-3
     = image_tag asset_path('Accessory.png')
     = image_tag asset_path('Onepiece.png')
 
-  h4.text-center.mt-3 ～新着投稿～
+div.container
+  h4.text-center.mt-3.bg-info.rounded.p-2.text-white 新着投稿
   div.container
     div.row.justify-content-center
       - @posts_new.each do |post|

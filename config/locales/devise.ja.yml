@@ -36,6 +36,8 @@ ja:
       account_locked: 'このアカウントは凍結されています(運営にお問い合わせください)'
       not_found_in_database: 'アカウントが見つかりません。メールアドレスとパスワードをご確認下さい'
       invalid: 'パスワードとメールアドレスを入力してください'
+      user:
+        deleted_account: 'このアカウントは既に削除されています'
     registrations:
       signed_up: 'ユーザー登録が完了しました！Lookを投稿しましょう'
       updated: 'ユーザー情報の更新が完了しました'
